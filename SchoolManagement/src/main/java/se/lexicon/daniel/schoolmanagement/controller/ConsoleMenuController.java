@@ -1,13 +1,20 @@
 package se.lexicon.daniel.schoolmanagement.controller;
 
+import se.lexicon.daniel.schoolmanagement.service.SchoolService;
+import se.lexicon.daniel.schoolmanagement.service.SchoolServiceImpl;
+import se.lexicon.erik.staff_manager.service.EmployeeServiceImpl;
+
 public class ConsoleMenuController {
-	// object from class
-// 	private EmployeeService employeeService;
-	private boolean running;
-		
+ 	private SchoolService schoolMangment;
+ 	private boolean running;
+ 	
+ 	/* 
+ 	* @param schoolMangment Initialize the interface that give access 
+ 	* to signatures from other locations in the program. 
+ 	*/
+ 	
 	public ConsoleMenuController() {
-		// object initialization
-//		employeeService = EmployeeServiceImpl.get();
+		schoolMangment = SchoolServiceImpl.get();
 		running = true;
 	}
 
@@ -22,6 +29,7 @@ public class ConsoleMenuController {
 	public void run() {
 		//Write code here	
 		System.out.println("Check Before exit");
+		
 		setRunning(false);
 		System.out.println("Check After exit");
 	}
