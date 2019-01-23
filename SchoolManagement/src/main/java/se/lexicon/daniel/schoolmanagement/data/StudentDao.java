@@ -6,9 +6,10 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public interface StudentDao {
 	
-	StudentModels saveStudentObject(StudentModels object);
+	StudentModels saveStudentObject(StudentModels student);
 	
 	StudentModels findStudentById(int studentId);
 	
 	List<StudentModels> findStudentByName(String studentName);
+
 }

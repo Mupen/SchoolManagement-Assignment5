@@ -9,24 +9,24 @@ public class StudentDaoList implements StudentDao {
 	private static List<StudentModels> storage = new ArrayList<>();
 	
 	@Override
-	public StudentModels saveStudentObject(StudentModels object) throws IllegalArgumentException {
-		if(object == null) {
+	public StudentModels saveStudentObject(StudentModels studentObject) throws IllegalArgumentException {
+		if(studentObject == null) {
 			throw new IllegalArgumentException();
 		}			
 		
-		if(findStudentById(object.getStudentId()) != null) {
+		if(findStudentById(studentObject.getStudentId()) != null) {
 			throw new IllegalArgumentException("Object with same id exists in storage");
 		}else {
-			storage.add(object);
-			return object;
+			storage.add(studentObject);
+			return studentObject;
 		}		
 	}
 	
 	@Override
 	public StudentModels findStudentById(int studentId) {
-		for(StudentModels object : storage) {
-			if(object.getStudentId() == studentId) {
-				return object;
+		for(StudentModels studentObject : storage) {
+			if(studentObject.getStudentId() == studentId) {
+				return studentObject;
 			}
 		}
 		return null;
@@ -35,9 +35,9 @@ public class StudentDaoList implements StudentDao {
 	@Override
 	public List<StudentModels> findStudentByName(String studentName) {
 		List<StudentModels> result = new ArrayList<>();
-		for(StudentModels object : storage) {
-			if(object.getStudentName().equalsIgnoreCase(studentName)) {
-				result.add(object);
+		for(StudentModels studentObject : storage) {
+			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
+				result.add(studentObject);
 			}
 		}
 		return result;		
@@ -46,4 +46,5 @@ public class StudentDaoList implements StudentDao {
 	public static void clear() {
 		storage.clear();
 	}
+
 }

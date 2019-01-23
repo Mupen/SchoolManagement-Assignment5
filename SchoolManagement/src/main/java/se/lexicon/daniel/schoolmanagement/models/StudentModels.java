@@ -14,7 +14,7 @@ public class StudentModels {
 	private boolean studentAssigned = false;
 
 	
-	public StudentModels(int studentId, String studentName, String studentEmail, String studentAddress , LocalDate studentEnrolledDate) {
+	public StudentModels(String studentName, String studentEmail, String studentAddress) {
 		this.studentId = ++sequencer;
 		this.studentName = studentName;
 		this.studentEmail = studentEmail;
@@ -22,7 +22,6 @@ public class StudentModels {
 		this.studentEnrolledDate = studentEnrolledDate;
 	}
 
-	
 	public String getStudentName() {
 		return studentName;
 	}
