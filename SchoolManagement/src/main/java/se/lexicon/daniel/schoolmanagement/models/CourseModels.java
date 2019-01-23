@@ -6,23 +6,20 @@ import java.util.List;
 public class CourseModels {
 
 	private static int sequencer = 0;
-	private int id;
+	private int courseId;
 	private String courseName;
 	private LocalDate courseStartDate;
 	private int courseWeekDuration;
 	private List<String> students;
 	
 	public CourseModels(String courseName, LocalDate courseStartDate, int courseWeekDuration, List<String> students) {
-		this.id = ++sequencer;
+		this.courseId = ++sequencer;
 		this.courseName = courseName;
 		this.courseStartDate = courseStartDate;
 		this.courseWeekDuration = courseWeekDuration;
 		this.setStudentsToCourse(students);
 	}
 
-	public int getId() {
-		return id;
-	}
 
 	public String getCourseName() {
 		return courseName;
@@ -54,6 +51,11 @@ public class CourseModels {
 
 	public void setStudentsToCourse(List<String> students) {
 		this.students = students;
+	}
+
+
+	public int getCourseId() {
+		return courseId;
 	}
 
 }

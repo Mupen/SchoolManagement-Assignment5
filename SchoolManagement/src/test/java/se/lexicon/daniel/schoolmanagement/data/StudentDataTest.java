@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
-	public class StudentDaoTest {
+	public class StudentDataTest {
 		
 		//This is what we are going to test
 		private StudentDao studentDaoInterfaceTest = new StudentDaoList();
