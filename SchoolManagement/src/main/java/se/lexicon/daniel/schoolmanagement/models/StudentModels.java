@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class StudentModels {
 	
 	private static int sequencer = 0;
-	private int id;
+	private int studentId;
 	private String studentName;
 	private String studentEmail;
 	private String studentAddress;
@@ -14,65 +14,86 @@ public class StudentModels {
 	private boolean studentAssigned = false;
 
 	
-	public StudentModels(int id, String studentName, String studentEmail, String studentAddress , LocalDate studentEnrolledDate) {
-		this.id = ++sequencer;
+	public StudentModels(int studentId, String studentName, String studentEmail, String studentAddress , LocalDate studentEnrolledDate) {
+		this.studentId = ++sequencer;
 		this.studentName = studentName;
 		this.studentEmail = studentEmail;
 		this.studentAddress = studentAddress;
 		this.studentEnrolledDate = studentEnrolledDate;
 	}
+
 	
-	public int getId() {
-		return id;
-	}
-	
-	public String getName() {
+	public String getStudentName() {
 		return studentName;
 	}
-	public void setName(String studentName) {
-		this.studentName = studentEmail;
+
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
-	public String getEmail() {
+
+
+	public String getStudentEmail() {
 		return studentEmail;
 	}
-	public void setEmail(String studentEmail) {
+
+
+	public void setStudentEmail(String studentEmail) {
 		this.studentEmail = studentEmail;
 	}
-	public String getAddress() {
+
+
+	public String getStudentAddress() {
 		return studentAddress;
 	}
-	public void setAddress(String studentAddress) {
+
+
+	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
 	}
-	public boolean isAssigned() {
-		return studentAssigned;
-	}
-	public void setAssigned(boolean studentAssigned) {
-		this.studentAssigned = studentAssigned;
-	}
 
-	public String[] getCourses() {
-		return studentCourses;
-	}
 
-	public void setCourses(String[] studentCourses) {
-		this.studentCourses = studentCourses;
-	}
-	
-	public LocalDate getEnrolledDate() {
+	public LocalDate getStudentEnrolledDate() {
 		return studentEnrolledDate;
 	}
 
-	public void setEnrolledDate(LocalDate studentEnrolledDate) {
+
+	public void setStudentEnrolledDate(LocalDate studentEnrolledDate) {
 		this.studentEnrolledDate = studentEnrolledDate;
 	}
-	
+
+
+	public String[] getStudentCourses() {
+		return studentCourses;
+	}
+
+
+	public void setStudentCourses(String[] studentCourses) {
+		this.studentCourses = studentCourses;
+	}
+
+
+	public boolean isStudentAssigned() {
+		return studentAssigned;
+	}
+
+
+	public void setStudentAssigned(boolean studentAssigned) {
+		this.studentAssigned = studentAssigned;
+	}
+
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((studentEmail == null) ? 0 : studentEmail.hashCode());
-		result = prime * result + id;
+		result = prime * result + studentId;
 		return result;
 	}
 	
@@ -90,14 +111,14 @@ public class StudentModels {
 				return false;
 		} else if (!studentEmail.equals(other.studentEmail))
 			return false;
-		if (id != other.id)
+		if (studentId != other.studentId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + ", student enrolled date=" + studentEnrolledDate + "]";
+		return "Student [id=" + studentId + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + ", student enrolled date=" + studentEnrolledDate + "]";
 	}
 
 
