@@ -64,6 +64,4 @@ public class SchoolService implements SchoolServiceManagement {
 		return null;
 	}
 
-
-
 }
