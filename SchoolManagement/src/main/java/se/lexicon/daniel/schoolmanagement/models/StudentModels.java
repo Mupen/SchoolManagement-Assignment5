@@ -1,21 +1,25 @@
 package se.lexicon.daniel.schoolmanagement.models;
 
+import java.time.LocalDate;
+
 public class StudentModels {
 	
 	private static int sequencer = 0;
 	private int id;
-	private String name;
-	private String email;
-	private String address;
-	private String[] courses;
-	private boolean assigned = false;
+	private String studentName;
+	private String studentEmail;
+	private String studentAddress;
+	private LocalDate studentEnrolledDate;
+	private String[] studentCourses;
+	private boolean studentAssigned = false;
 
 	
-	public StudentModels(int id, String name, String email, String address) {
+	public StudentModels(int id, String studentName, String studentEmail, String studentAddress , LocalDate studentEnrolledDate) {
 		this.id = ++sequencer;
-		this.name = name;
-		this.email = email;
-		this.address = address;
+		this.studentName = studentName;
+		this.studentEmail = studentEmail;
+		this.studentAddress = studentAddress;
+		this.studentEnrolledDate = studentEnrolledDate;
 	}
 	
 	public int getId() {
@@ -23,43 +27,51 @@ public class StudentModels {
 	}
 	
 	public String getName() {
-		return name;
+		return studentName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String studentName) {
+		this.studentName = studentEmail;
 	}
 	public String getEmail() {
-		return email;
+		return studentEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String studentEmail) {
+		this.studentEmail = studentEmail;
 	}
 	public String getAddress() {
-		return address;
+		return studentAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(String studentAddress) {
+		this.studentAddress = studentAddress;
 	}
 	public boolean isAssigned() {
-		return assigned;
+		return studentAssigned;
 	}
-	public void setAssigned(boolean assigned) {
-		this.assigned = assigned;
+	public void setAssigned(boolean studentAssigned) {
+		this.studentAssigned = studentAssigned;
 	}
 
 	public String[] getCourses() {
-		return courses;
+		return studentCourses;
 	}
 
-	public void setCourses(String[] courses) {
-		this.courses = courses;
+	public void setCourses(String[] studentCourses) {
+		this.studentCourses = studentCourses;
+	}
+	
+	public LocalDate getEnrolledDate() {
+		return studentEnrolledDate;
+	}
+
+	public void setEnrolledDate(LocalDate studentEnrolledDate) {
+		this.studentEnrolledDate = studentEnrolledDate;
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((studentEmail == null) ? 0 : studentEmail.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -73,10 +85,10 @@ public class StudentModels {
 		if (getClass() != obj.getClass())
 			return false;
 		StudentModels other = (StudentModels) obj;
-		if (email == null) {
-			if (other.email != null)
+		if (studentEmail == null) {
+			if (other.studentEmail != null)
 				return false;
-		} else if (!email.equals(other.email))
+		} else if (!studentEmail.equals(other.studentEmail))
 			return false;
 		if (id != other.id)
 			return false;
@@ -85,8 +97,10 @@ public class StudentModels {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", Courses=" + courses + "]";
+		return "Student [id=" + id + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + ", student enrolled date=" + studentEnrolledDate + "]";
 	}
+
+
 
 
 	

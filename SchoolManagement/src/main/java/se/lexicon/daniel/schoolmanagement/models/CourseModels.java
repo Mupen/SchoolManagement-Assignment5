@@ -8,15 +8,16 @@ public class CourseModels {
 	private static int sequencer = 0;
 	private int id;
 	private String courseName;
-	private LocalDate startDate;
-	private int weekDuration;
-	private List<StudentModels> students;
+	private LocalDate courseStartDate;
+	private int courseWeekDuration;
+	private List<String> students;
 	
-	public CourseModels(String courseName, LocalDate startDate) {
+	public CourseModels(String courseName, LocalDate courseStartDate, int courseWeekDuration, List<String> students) {
 		this.id = ++sequencer;
 		this.courseName = courseName;
-		this.startDate = startDate;
-		
+		this.courseStartDate = courseStartDate;
+		this.courseWeekDuration = courseWeekDuration;
+		this.setStudentsToCourse(students);
 	}
 
 	public int getId() {
@@ -32,26 +33,26 @@ public class CourseModels {
 	}
 
 	public int getWeekDuration() {
-		return weekDuration;
+		return courseWeekDuration;
 	}
 
-	public void setWeekDuration(int weekDuration) {
-		this.weekDuration = weekDuration;
+	public void setWeekDuration(int courseWeekDuration) {
+		this.courseWeekDuration = courseWeekDuration;
 	}
 
 	public LocalDate getStartDate() {
-		return startDate;
+		return courseStartDate;
 	}
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
+	public void setStartDate(LocalDate courseStartDate) {
+		this.courseStartDate = courseStartDate;
 	}
 
-	public List<StudentModels> getStudents() {
+	public List<String> getStudentsInCourse() {
 		return students;
 	}
 
-	public void setStudents(List<StudentModels> students) {
+	public void setStudentsToCourse(List<String> students) {
 		this.students = students;
 	}
 

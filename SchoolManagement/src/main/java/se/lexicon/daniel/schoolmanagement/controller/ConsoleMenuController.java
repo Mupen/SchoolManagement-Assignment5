@@ -2,6 +2,7 @@ package se.lexicon.daniel.schoolmanagement.controller;
 
 import se.lexicon.daniel.schoolmanagement.service.SchoolService;
 import se.lexicon.daniel.schoolmanagement.service.SchoolServiceImpl;
+import se.lexicon.daniel.schoolmanagement.service.SchoolServiceManagement;
 import se.lexicon.erik.staff_manager.service.EmployeeServiceImpl;
 
 public class ConsoleMenuController {
@@ -14,7 +15,7 @@ public class ConsoleMenuController {
  	*/
  	
 	public ConsoleMenuController() {
-		schoolMangment = SchoolServiceImpl.get();
+		schoolMangment = SchoolServiceManagement.get();
 		running = true;
 	}
 

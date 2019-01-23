@@ -3,29 +3,27 @@ package se.lexicon.daniel.schoolmanagement.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import se.lexicon.daniel.schoolmanagement.models.CourseModels;
+import se.lexicon.daniel.schoolmanagement.models.StudentModels;
+
 	public interface SchoolService {
 
-		SalesPerson registerNewSalesPerson(String name, LocalDate hiringDate);
+		StudentModels registerNewStudent(int id, String studentName, String studentEmail, String studentAddress , LocalDate studentEnrolledDate);
 
-		SystemDeveloper registerNewSystemDeveloper(String name, LocalDate hiringDate);
+		CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration);
 
-		SystemDeveloper registerNewSystemDeveloper(String name, LocalDate hiringDate, String[] certificates,
-				String[] languages);
+		StudentModels registerNewStudentToCourse (String[] courses);
+		
+		StudentModels removeCourse(CourseModels courses);
+		
+		CourseModels removeStudent(StudentModels student);
 
-		boolean removeEmployee(Employee employee);
+		StudentModels findStudentById(int id);
+		CourseModels findCourseById(int id);
 
-		Employee findEmployeeById(int id);
+		List<CourseModels> findCourseByName(String courseName);
+		List<StudentModels> findStudentByName(String studentName);
 
-		List<Employee> findByName(String name);
-
-		List<Employee> findBySalaryAbove(double salary);
-
-		List<Employee> findBySalaryBelow(double salary);
-
-		List<SystemDeveloper> findAllSystemDevs();
-
-		List<SalesPerson> findAllSalesPersons();
-
-		List<Employee> getAllEmployees();
-
+		List<StudentModels> findAllStudentModels();
+		List<CourseModels> findAllCourseModels();
 	}
