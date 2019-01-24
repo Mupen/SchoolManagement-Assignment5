@@ -3,8 +3,6 @@ package se.lexicon.daniel.schoolmanagement.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.junit.After;
@@ -16,7 +14,7 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 	public class StudentDataTest {
 		
 		//This is what we are going to test
-		private StudentDao studentDaoInterfaceTest = new StudentDaoList();
+		private StudentDaoSignatures studentDaoInterfaceTest = new StudentDao();
 		
 		//Is used in findById test
 		private StudentModels testStudentObject;
@@ -34,11 +32,11 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 		//Runs AFTER each test
 		@After
 		public void tearDown() {
-			StudentDaoList.clear();
+			StudentDao.clear();
 		}
 		
 		@Test
-		public void test_save_student_object() {
+		public void test_saveStudentObject_return_studentObject() {
 			StudentModels expectedStudentObject = new StudentModels("Test", "Testquist", "123456787");
 			assertEquals(expectedStudentObject, studentDaoInterfaceTest.saveStudentObject(expectedStudentObject));
 		}

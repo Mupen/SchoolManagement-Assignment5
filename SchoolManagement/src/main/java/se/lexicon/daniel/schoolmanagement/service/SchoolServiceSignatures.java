@@ -6,9 +6,9 @@ import java.util.List;
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
-public interface SchoolServiceManagement {
+public interface SchoolServiceSignatures {
 
-	StudentModels registerNewStudent(int id, String studentName, String studentEmail, String studentAddress,
+	StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress,
 			LocalDate studentEnrolledDate);
 
 	CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration);

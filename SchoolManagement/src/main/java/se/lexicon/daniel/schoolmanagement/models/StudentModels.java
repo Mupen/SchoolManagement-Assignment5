@@ -19,7 +19,6 @@ public class StudentModels {
 		this.studentName = studentName;
 		this.studentEmail = studentEmail;
 		this.studentAddress = studentAddress;
-		this.studentEnrolledDate = studentEnrolledDate;
 	}
 
 	public String getStudentName() {

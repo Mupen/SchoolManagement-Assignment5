@@ -7,7 +7,15 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDao implements CourseDaoSignatures {
 
+	private static final CourseDaoSignatures instance;
+	
+	static {instance = new CourseDao();}
+	
+	public static CourseDaoSignatures get() {return instance;}
+	
 	private static List<CourseModels> storage = new ArrayList<>();
+	
+	private CourseDao() {storage = new ArrayList<>();}
 	
 	@Override
 	public CourseModels saveCourseObject(CourseModels courseObject) throws IllegalArgumentException {

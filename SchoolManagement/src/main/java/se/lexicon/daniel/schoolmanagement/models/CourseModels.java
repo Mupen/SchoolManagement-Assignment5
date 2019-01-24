@@ -12,7 +12,7 @@ public class CourseModels {
 	private int courseWeekDuration;
 	private List<String> students;
 	
-	public CourseModels(String courseName, LocalDate courseStartDate, int courseWeekDuration, List<String> students) {
+	public CourseModels(String courseName, LocalDate courseStartDate, int courseWeekDuration) {
 		this.courseId = ++sequencer;
 		this.courseName = courseName;
 		this.courseStartDate = courseStartDate;

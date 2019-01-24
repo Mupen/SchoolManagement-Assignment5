@@ -3,6 +3,7 @@ package se.lexicon.daniel.schoolmanagement.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.After;
@@ -13,30 +14,31 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDataTest {
 	//This is what we are going to test
-	private CourseDao CourseDaoInterfaceTest = new CourseDaoList();
+	private CourseDaoSignatures CourseDaoInterfaceTest = new CourseDao();
 	
 	//Is used in findById test
 	private CourseModels testCourseObject;
 	private int testCourseId;
+	private LocalDate courseStartDate;
 	
 	//Runs BEFORE each test
 	@Before
 	public void init() {
-		testCourseObject = new CourseModels("Daniel", "Daniel@Gmail.com", "Daniel street 6 34262 Moheda");
+		testCourseObject = new CourseModels("English", courseStartDate, 10);
 		CourseDaoInterfaceTest.saveCourseObject(testCourseObject);
 		testCourseId = testCourseObject.getCourseId();
-		CourseDaoInterfaceTest.saveCourseObject(new CourseModels("Bob", "Bob@Gmail.com", "Bob street 6 34262 Moheda"));
+		CourseDaoInterfaceTest.saveCourseObject(new CourseModels("Math", courseStartDate, 20));
 	}
 	
 	//Runs AFTER each test
 	@After
 	public void tearDown() {
-		CourseDaoList.clear();
+		CourseDao.clear();
 	}
 	
 	@Test
 	public void test_save_Course_object() {
-		CourseModels expectedCourseObject = new CourseModels("Test", "Testquist", "123456787");
+		CourseModels expectedCourseObject = new CourseModels("Java", courseStartDate, 20);
 		assertEquals(expectedCourseObject, CourseDaoInterfaceTest.saveCourseObject(expectedCourseObject));
 	}
 	
@@ -52,17 +54,17 @@ public class CourseDataTest {
 	
 	@Test
 	public void test_findCourseByName() {
-		String expectedNameParameter = "Test";
-		List<CourseModels> CourseObjectList = CourseDaoInterfaceTest.findCourseByName(expectedNameParameter);
-		for(CourseModels CourseObject : CourseObjectList) {
-			assertEquals(expectedNameParameter, CourseObject.getCourseName());
+		String expectedNameParameter = "Ruby on Rails";
+		List<CourseModels> courseObjectList = CourseDaoInterfaceTest.findCourseByName(expectedNameParameter);
+		for(CourseModels courseObject : courseObjectList) {
+			assertEquals(expectedNameParameter, courseObject.getCourseName());
 		}
 	}
 	
 	@Test
 	public void test_findCourseByName_with_lambda() {
-		String CourseName = "Test";
-		List<CourseModels> CourseObjectList = CourseDaoInterfaceTest.findCourseByName(CourseName);
-		assertTrue(CourseObjectList.stream().allMatch(Course -> Course.getCourseName().equals(CourseName)));
+		String expectedNameParameter = "Ruby on Rails";
+		List<CourseModels> courseObjectList = CourseDaoInterfaceTest.findCourseByName(expectedNameParameter);
+		assertTrue(courseObjectList.stream().allMatch(course -> course.getCourseName().equals(expectedNameParameter)));
 	}
 }

@@ -3,12 +3,36 @@ package se.lexicon.daniel.schoolmanagement.service;
 import java.time.LocalDate;
 import java.util.List;
 
+import se.lexicon.daniel.schoolmanagement.data.CourseDao;
+import se.lexicon.daniel.schoolmanagement.data.CourseDaoSignatures;
+import se.lexicon.daniel.schoolmanagement.data.StudentDao;
+import se.lexicon.daniel.schoolmanagement.data.StudentDaoSignatures;
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
-public class SchoolService implements SchoolServiceManagement {
+public class SchoolService implements SchoolServiceSignatures {
 
-	public StudentModels registerNewStudent(int id, String studentName, String studentEmail, String studentAddress,
+	//Static instance
+	private static final SchoolServiceSignatures INSTANCE;
+	
+	static {
+		INSTANCE = new SchoolService();
+	}
+	
+	private StudentDaoSignatures studentDaoSignaturesObject;
+	private CourseDaoSignatures courseDaoSignaturesObject;
+	
+	private SchoolService() {
+		studentDaoSignaturesObject = StudentDao.get();
+		courseDaoSignaturesObject = CourseDao.get();
+	}
+	
+	public static SchoolServiceSignatures get() {
+		return INSTANCE;
+	}
+	
+	
+	public StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress,
 			LocalDate studentEnrolledDate) {
 		// TODO Auto-generated method stub
 		return null;
@@ -23,7 +47,7 @@ public class SchoolService implements SchoolServiceManagement {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	public StudentModels removeCourse(CourseModels courses) {
 		// TODO Auto-generated method stub
 		return null;
@@ -62,6 +86,10 @@ public class SchoolService implements SchoolServiceManagement {
 	public List<CourseModels> findAllCourseModels() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static void clear() {
+		storage.clear();
 	}
 
 }
