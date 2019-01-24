@@ -12,5 +12,6 @@ public interface StudentDaoSignatures {
 	
 	List<StudentModels> findStudentByName(String studentName);
 
-	void removeAll();
+	void removeAllStudent();
+
 }

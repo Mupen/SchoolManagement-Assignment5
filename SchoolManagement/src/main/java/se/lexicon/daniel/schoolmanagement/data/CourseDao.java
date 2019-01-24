@@ -7,31 +7,32 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDao implements CourseDaoSignatures {
 
-	private static final CourseDaoSignatures instance = new CourseDao();
+	// Static final instance of CourseDao need to be accessed by a method getCourseDaoInstance
+	private static final CourseDaoSignatures courseDaoInstance = new CourseDao();
+	public static CourseDaoSignatures getCourseDaoInstance() {return courseDaoInstance;}
 	
-	public static CourseDaoSignatures getCourseDaoInstance() {return instance;}
-	
-	private static List<CourseModels> storage = new ArrayList<>();
-	
-	private CourseDao() {storage = new ArrayList<>();}
+	// List of CrouseModels named storage gain values when the class constructor is activated. 
+	// Because CourseDao can only have one instance it will only exist one storage for CourseModels
+	private List<CourseModels> courseStorage;
+	private CourseDao() {courseStorage = new ArrayList<>();}
 	
 	@Override
 	public CourseModels saveCourseObject(CourseModels courseObject) throws IllegalArgumentException {
 		if(courseObject == null) {
 			throw new IllegalArgumentException();
 		}			
-		
 		if(findCourseById(courseObject.getCourseId()) != null) {
 			throw new IllegalArgumentException("Object with same id exists in storage");
-		}else {
-			storage.add(courseObject);
+		}
+		else {
+			courseStorage.add(courseObject);
 			return courseObject;
 		}		
 	}
 	
 	@Override
 	public CourseModels findCourseById(int courseId) {
-		for(CourseModels courseObject : storage) {
+		for(CourseModels courseObject : courseStorage) {
 			if(courseObject.getCourseId() == courseId) {
 				return courseObject;
 			}
@@ -42,7 +43,7 @@ public class CourseDao implements CourseDaoSignatures {
 	@Override
 	public List<CourseModels> findCourseByName(String courseName) {
 		List<CourseModels> result = new ArrayList<>();
-		for(CourseModels courseObject : storage) {
+		for(CourseModels courseObject : courseStorage) {
 			if(courseObject.getCourseName().equalsIgnoreCase(courseName)) {
 				result.add(courseObject);
 			}
@@ -50,12 +51,8 @@ public class CourseDao implements CourseDaoSignatures {
 		return result;		
 	}
 	
-	public void removeAll() {
-		storage.clear();
-	}
-	
-	public static void removeStaticAll() {
-		storage.clear();
+	public void removeAllCourse() {
+		courseStorage.clear();
 	}
 
 }

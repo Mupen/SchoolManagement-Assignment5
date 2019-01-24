@@ -8,12 +8,13 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public interface SchoolServiceSignatures {
 
-	StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress,
-			LocalDate studentEnrolledDate);
+	StudentModels registerNewStudent();
 
-	CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration);
+	CourseModels registerNewCourse();
 
-	StudentModels registerNewStudentToCourse(String[] courses);
+	StudentModels registerNewStudentToCourse(StudentModels student, CourseModels courses);
+	
+	StudentModels removeStudentFromCourse(StudentModels student, CourseModels courses);
 
 	StudentModels removeCourse(CourseModels courses);
 

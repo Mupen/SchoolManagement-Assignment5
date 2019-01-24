@@ -6,16 +6,15 @@ import java.util.List;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class StudentDao implements StudentDaoSignatures {
-
-	private static final StudentDaoSignatures instance = new StudentDao();
 	
-	public static StudentDaoSignatures getStudentDaoInstance() {return instance;}
+	// Static final instance of CourseDao need to be accessed by a method getCourseDaoInstance
+	private static final StudentDaoSignatures studentDaoInstance = new StudentDao();
+	public static StudentDaoSignatures getStudentDaoInstance() {return studentDaoInstance;}
 	
-// 	i think i should change the get. It is to hard to know what it mean and i want a better name for it.
-	
-	private static List<StudentModels> storage = new ArrayList<>();
-	
-	private StudentDao() {storage = new ArrayList<>();}
+	// List of CrouseModels named storage gain values when the class constructor is activated. 
+	// Because CourseDao can only have one instance it will only exist one storage for CourseModels
+	private List<StudentModels> studentStorage;
+	private StudentDao() {studentStorage = new ArrayList<>();}
 	
 	@Override
 	public StudentModels saveStudentObject(StudentModels studentObject) throws IllegalArgumentException {
@@ -26,14 +25,14 @@ public class StudentDao implements StudentDaoSignatures {
 			throw new IllegalArgumentException("Object with same id exists in storage");
 		}
 		else {
-			storage.add(studentObject);
+			studentStorage.add(studentObject);
 			return studentObject;
 		}		
 	}
 	
 	@Override
 	public StudentModels findStudentById(int studentId) {
-		for(StudentModels studentObject : storage) {
+		for(StudentModels studentObject : studentStorage) {
 			if(studentObject.getStudentId() == studentId) {
 				return studentObject;
 			}
@@ -44,7 +43,7 @@ public class StudentDao implements StudentDaoSignatures {
 	@Override
 	public List<StudentModels> findStudentByName(String studentName) {
 		List<StudentModels> result = new ArrayList<>();
-		for(StudentModels studentObject : storage) {
+		for(StudentModels studentObject : studentStorage) {
 			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
 				result.add(studentObject);
 			}
@@ -52,12 +51,8 @@ public class StudentDao implements StudentDaoSignatures {
 		return result;		
 	}
 	
-	public void removeAll() {
-		storage.clear();
-	}
-
-	public static void removeStaticAll() {
-		storage.clear();
+	public void removeAllStudent() {
+		studentStorage.clear();
 	}
 
 }

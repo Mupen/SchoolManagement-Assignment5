@@ -46,13 +46,18 @@ public class SchoolServiceTest {
 	
 	@After
 	public void tearDown() {
-		CourseDao.removeStaticAll();
-		StudentDao.removeStaticAll();
+		courseDaoDependency.removeAllCourse();
+		studentDaoDependency.removeAllStudent();
 	}
 	
 	@Test
 	public void test_registerNewStudent() {
-		
+		String studentName = "Name"; 
+		String studentEmail = "studentEmail";
+		String studentAddress = "student Address 6";
+		studentObject = new StudentModels(studentName, studentEmail, studentAddress);
+		studentDaoDependency.saveStudentObject(studentObject);
+		assertEquals(studentObject, studentDaoDependency.saveStudentObject(studentObject));
 	}
 	
 	@Test

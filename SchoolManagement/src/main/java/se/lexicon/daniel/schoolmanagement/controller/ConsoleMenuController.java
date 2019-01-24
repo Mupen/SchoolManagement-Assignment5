@@ -1,9 +1,8 @@
 package se.lexicon.daniel.schoolmanagement.controller;
 
-import se.lexicon.daniel.schoolmanagement.service.SchoolService;
 
 public class ConsoleMenuController {
- 	private SchoolService schoolMangment;
+ 	private ConsoleViewController viewMenu; 
  	private boolean running;
  	
  	/* 
@@ -12,7 +11,7 @@ public class ConsoleMenuController {
  	*/
  	
 	public ConsoleMenuController() {
-		schoolMangment.findCourseByName("Math");
+		viewMenu = new ConsoleViewController();
 		running = true;
 	}
 
@@ -25,10 +24,8 @@ public class ConsoleMenuController {
 	}
 	
 	public void run() {
-		//Write code here	
-		System.out.println("Check Before exit");
-		
+		viewMenu.startingUserInterface(); 	
 		setRunning(false);
-		System.out.println("Check After exit");
 	}
+
 }

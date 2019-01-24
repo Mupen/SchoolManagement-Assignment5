@@ -32,7 +32,7 @@ public class StudentDataTest {
 	//Runs AFTER each test
 	@After
 	public void tearDown() {
-		StudentDao.removeStaticAll();;
+		studentDaoInterfaceTest.removeAllStudent();;
 	}
 
 	@Test
