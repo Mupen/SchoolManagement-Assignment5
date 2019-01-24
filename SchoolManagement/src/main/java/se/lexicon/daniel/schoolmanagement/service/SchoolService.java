@@ -12,22 +12,19 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class SchoolService implements SchoolServiceSignatures {
 
-	//Static instance
-	private static final SchoolServiceSignatures INSTANCE;
+	// Static instance
+	private static final SchoolServiceSignatures INSTANCE = new SchoolService();
 	
-	static {
-		INSTANCE = new SchoolService();
-	}
-	
+	// Private object references
 	private StudentDaoSignatures studentDaoSignaturesObject;
 	private CourseDaoSignatures courseDaoSignaturesObject;
 	
-	private SchoolService() {
-		studentDaoSignaturesObject = StudentDao.get();
-		courseDaoSignaturesObject = CourseDao.get();
+	SchoolService() {
+		studentDaoSignaturesObject = StudentDao.getStudentDaoInstance();
+		courseDaoSignaturesObject = CourseDao.getCourseDaoInstance();
 	}
 	
-	public static SchoolServiceSignatures get() {
+	public static SchoolServiceSignatures getSchoolServiceInstance() {
 		return INSTANCE;
 	}
 	
@@ -54,6 +51,11 @@ public class SchoolService implements SchoolServiceSignatures {
 	}
 
 	public CourseModels removeStudent(StudentModels student) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public CourseModels removeStudentFromCourse(StudentModels student) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -88,8 +90,4 @@ public class SchoolService implements SchoolServiceSignatures {
 		return null;
 	}
 	
-	public static void clear() {
-		storage.clear();
-	}
-
 }

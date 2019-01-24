@@ -7,11 +7,9 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDao implements CourseDaoSignatures {
 
-	private static final CourseDaoSignatures instance;
+	private static final CourseDaoSignatures instance = new CourseDao();
 	
-	static {instance = new CourseDao();}
-	
-	public static CourseDaoSignatures get() {return instance;}
+	public static CourseDaoSignatures getCourseDaoInstance() {return instance;}
 	
 	private static List<CourseModels> storage = new ArrayList<>();
 	
@@ -52,7 +50,11 @@ public class CourseDao implements CourseDaoSignatures {
 		return result;		
 	}
 	
-	public static void clear() {
+	public void removeAll() {
+		storage.clear();
+	}
+	
+	public static void removeStaticAll() {
 		storage.clear();
 	}
 

@@ -14,13 +14,13 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDataTest {
 	//This is what we are going to test
-	private CourseDaoSignatures CourseDaoInterfaceTest = new CourseDao();
-	
+	private CourseDaoSignatures CourseDaoInterfaceTest = CourseDao.getCourseDaoInstance();
+
 	//Is used in findById test
 	private CourseModels testCourseObject;
 	private int testCourseId;
 	private LocalDate courseStartDate;
-	
+
 	//Runs BEFORE each test
 	@Before
 	public void init() {
@@ -29,29 +29,29 @@ public class CourseDataTest {
 		testCourseId = testCourseObject.getCourseId();
 		CourseDaoInterfaceTest.saveCourseObject(new CourseModels("Math", courseStartDate, 20));
 	}
-	
+
 	//Runs AFTER each test
 	@After
 	public void tearDown() {
-		CourseDao.clear();
+		StudentDao.removeStaticAll();;
 	}
-	
+
 	@Test
 	public void test_save_Course_object() {
 		CourseModels expectedCourseObject = new CourseModels("Java", courseStartDate, 20);
 		assertEquals(expectedCourseObject, CourseDaoInterfaceTest.saveCourseObject(expectedCourseObject));
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void test_save_Course_object_duplicate_throw_IllegalArgumentException() {
 		CourseDaoInterfaceTest.saveCourseObject(testCourseObject);		
 	}
-	
+
 	@Test
 	public void test_findCourseById_return_CourseObject() {
 		assertEquals(testCourseObject, CourseDaoInterfaceTest.findCourseById(testCourseId));
 	}
-	
+
 	@Test
 	public void test_findCourseByName() {
 		String expectedNameParameter = "Ruby on Rails";
@@ -60,7 +60,7 @@ public class CourseDataTest {
 			assertEquals(expectedNameParameter, courseObject.getCourseName());
 		}
 	}
-	
+
 	@Test
 	public void test_findCourseByName_with_lambda() {
 		String expectedNameParameter = "Ruby on Rails";

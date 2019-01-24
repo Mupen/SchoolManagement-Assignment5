@@ -11,29 +11,43 @@ import org.junit.Test;
 
 import se.lexicon.daniel.schoolmanagement.data.CourseDao;
 import se.lexicon.daniel.schoolmanagement.data.CourseDaoSignatures;
+import se.lexicon.daniel.schoolmanagement.data.StudentDao;
+import se.lexicon.daniel.schoolmanagement.data.StudentDaoSignatures;
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
+import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class SchoolServiceTest {
 	//This is what we are going to test
-	private SchoolServiceSignatures SchoolServiceInterfaceTest = new SchoolService();
+	private SchoolServiceSignatures schoolServiceInterfaceDependency = SchoolService.getSchoolServiceInstance();
+	private StudentDaoSignatures studentDaoDependency = StudentDao.getStudentDaoInstance();
+	private CourseDaoSignatures courseDaoDependency = CourseDao.getCourseDaoInstance();
 	
-	//Is used in findById test
-	private SchoolService testSchoolServiceObject;
-	private LocalDate emptyDateObject;
-
+	// Models
+	private StudentModels studentObject;
+	private CourseModels courseObject;
+	
+	// id, date int's
+	private int studentId;
+	private int courseId;	
+	private LocalDate studentEnrolment = LocalDate.parse("2018-12-01");
+	private LocalDate courseStartDate = LocalDate.parse("2018-12-01");
+	private int courseWeekDuration = 10;
+			
 	//Runs BEFORE each test
 	@Before
 	public void init() {
-		testSchoolServiceObject = new SchoolService();
-		testSchoolServiceObject.registerNewCourse("Math", emptyDateObject, 10);
-		testSchoolServiceObject.registerNewStudent("Daniel", "Daniel@Gmail.com", "Daniel street 6 34262 Moheda", emptyDateObject);
+		studentObject = new StudentModels("Daniel", "Daniel@Gmail.com", "Daniel street 6 34262 Moheda");
+		courseObject = new CourseModels("Math", courseStartDate, courseWeekDuration);
+		studentId = studentObject.getStudentId();
+		courseId = courseObject.getCourseId();
+		studentDaoDependency.saveStudentObject(studentObject);
+		courseDaoDependency.saveCourseObject(courseObject);
 	}
 	
-	//Runs AFTER each test
 	@After
 	public void tearDown() {
-		SchoolService.clear();
-		
+		CourseDao.removeStaticAll();
+		StudentDao.removeStaticAll();
 	}
 	
 	@Test
@@ -52,32 +66,17 @@ public class SchoolServiceTest {
 	}
 	
 	@Test
+	public void test_removeStudentFromCourse() {
+		
+	}
+	
+	@Test
 	public void test_removeCourse() {
 		
 	}
 	
 	@Test
 	public void test_removeStudent() {
-		
-	}
-	
-	@Test
-	public void test_findStudentById() {
-		
-	}
-	
-	@Test
-	public void test_findCourseById() {
-		
-	}
-	
-	@Test
-	public void test_findCourseByName() {
-		
-	}
-	
-	@Test
-	public void test_findStudentByName() {
 		
 	}
 	
@@ -90,5 +89,4 @@ public class SchoolServiceTest {
 	public void test_findAllCourseModels() {
 		
 	}
-	
 }

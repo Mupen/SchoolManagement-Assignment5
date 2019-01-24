@@ -7,11 +7,11 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class StudentDao implements StudentDaoSignatures {
 
-	private static final StudentDaoSignatures instance;
+	private static final StudentDaoSignatures instance = new StudentDao();
 	
-	static {instance = new StudentDao();}
+	public static StudentDaoSignatures getStudentDaoInstance() {return instance;}
 	
-	public static StudentDaoSignatures get() {return instance;}
+// 	i think i should change the get. It is to hard to know what it mean and i want a better name for it.
 	
 	private static List<StudentModels> storage = new ArrayList<>();
 	
@@ -52,7 +52,11 @@ public class StudentDao implements StudentDaoSignatures {
 		return result;		
 	}
 	
-	public static void clear() {
+	public void removeAll() {
+		storage.clear();
+	}
+
+	public static void removeStaticAll() {
 		storage.clear();
 	}
 
