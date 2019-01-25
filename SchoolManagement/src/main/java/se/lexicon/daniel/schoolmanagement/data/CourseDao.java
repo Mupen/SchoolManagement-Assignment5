@@ -42,13 +42,13 @@ public class CourseDao implements CourseDaoSignatures {
 
 	@Override
 	public List<CourseModels> findCourseByName(String courseName) {
-		List<CourseModels> result = new ArrayList<>();
+		List<CourseModels> resultList = new ArrayList<>();
 		for(CourseModels courseObject : courseStorage) {
 			if(courseObject.getCourseName().equalsIgnoreCase(courseName)) {
-				result.add(courseObject);
+				resultList.add(courseObject);
 			}
 		}
-		return result;		
+		return resultList;		
 	}
 	
 	public void removeAllCourse() {

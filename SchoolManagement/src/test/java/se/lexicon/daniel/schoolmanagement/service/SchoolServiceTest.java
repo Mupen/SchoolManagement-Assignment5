@@ -25,11 +25,20 @@ public class SchoolServiceTest {
 	// Models
 	private StudentModels studentObject;
 	private CourseModels courseObject;
+	private StudentModels newStudentObject;
+	private CourseModels newCourseObject;
 	
-	// id, date int's
+	
+	// student
 	private int studentId;
-	private int courseId;	
+	private String studentName = "Daniel"; 
+	private String studentEmail = "Daniel@gmail.com";
+	private String studentAddress = "student Address 1";
 	private LocalDate studentEnrolment = LocalDate.parse("2018-12-01");
+	
+	// course
+	private int courseId;	
+	private String courseName = "Math"; 
 	private LocalDate courseStartDate = LocalDate.parse("2018-12-01");
 	private int courseWeekDuration = 10;
 			
@@ -52,17 +61,14 @@ public class SchoolServiceTest {
 	
 	@Test
 	public void test_registerNewStudent() {
-		String studentName = "Name"; 
-		String studentEmail = "studentEmail";
-		String studentAddress = "student Address 6";
 		studentObject = new StudentModels(studentName, studentEmail, studentAddress);
-		studentDaoDependency.saveStudentObject(studentObject);
 		assertEquals(studentObject, studentDaoDependency.saveStudentObject(studentObject));
 	}
 	
 	@Test
-	public void test_registerNewCourse() {
-		
+	public void test_registerNewCourse_SaveObjectToList() {
+		courseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration);
+		assertEquals(courseObject, courseDaoDependency.saveCourseObject(courseObject));
 	}
 	
 	@Test

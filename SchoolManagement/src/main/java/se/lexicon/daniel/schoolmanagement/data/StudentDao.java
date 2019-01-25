@@ -41,14 +41,25 @@ public class StudentDao implements StudentDaoSignatures {
 	}
 
 	@Override
-	public List<StudentModels> findStudentByName(String studentName) {
-		List<StudentModels> result = new ArrayList<>();
+	public List<StudentModels> findStudentByEmail(String studentEmail) {
+		List<StudentModels> objectList = new ArrayList<>();
 		for(StudentModels studentObject : studentStorage) {
-			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
-				result.add(studentObject);
+			if(studentObject.getStudentName().equalsIgnoreCase(studentEmail)) {
+				objectList.add(studentObject);
 			}
 		}
-		return result;		
+		return objectList;		
+	}
+	
+	@Override
+	public List<StudentModels> findStudentByName(String studentName) {
+		List<StudentModels> objectList = new ArrayList<>();
+		for(StudentModels studentObject : studentStorage) {
+			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
+				objectList.add(studentObject);
+			}
+		}
+		return objectList;		
 	}
 	
 	public void removeAllStudent() {

@@ -1,24 +1,29 @@
 package se.lexicon.daniel.schoolmanagement.models;
 
-import java.time.LocalDate;
-
 public class StudentModels {
 	
 	private static int sequencer = 0;
-	private int studentId;
+	private final int studentId;
 	private String studentName;
 	private String studentEmail;
 	private String studentAddress;
-	private LocalDate studentEnrolledDate;
-	private String[] studentCourses;
-	private boolean studentAssigned = false;
-
 	
+	/**
+	 * 
+	 * @param name
+	 * @param email
+	 * @param address
+	 */
+
 	public StudentModels(String studentName, String studentEmail, String studentAddress) {
 		this.studentId = ++sequencer;
 		this.studentName = studentName;
 		this.studentEmail = studentEmail;
 		this.studentAddress = studentAddress;
+	}
+	
+	public int getStudentId() {
+		return studentId;
 	}
 
 	public String getStudentName() {
@@ -48,41 +53,6 @@ public class StudentModels {
 
 	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
-	}
-
-
-	public LocalDate getStudentEnrolledDate() {
-		return studentEnrolledDate;
-	}
-
-
-	public void setStudentEnrolledDate(LocalDate studentEnrolledDate) {
-		this.studentEnrolledDate = studentEnrolledDate;
-	}
-
-
-	public String[] getStudentCourses() {
-		return studentCourses;
-	}
-
-
-	public void setStudentCourses(String[] studentCourses) {
-		this.studentCourses = studentCourses;
-	}
-
-
-	public boolean isStudentAssigned() {
-		return studentAssigned;
-	}
-
-
-	public void setStudentAssigned(boolean studentAssigned) {
-		this.studentAssigned = studentAssigned;
-	}
-
-
-	public int getStudentId() {
-		return studentId;
 	}
 
 
@@ -116,7 +86,7 @@ public class StudentModels {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + studentId + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + ", student enrolled date=" + studentEnrolledDate + "]";
+		return "Student [id=" + studentId + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + "]";
 	}
 
 

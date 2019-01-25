@@ -30,22 +30,14 @@ public class SchoolService implements SchoolServiceSignatures {
 	}
 
 	@Override
-	public StudentModels registerNewStudent() {
-		String studentName = "Name"; 
-		String studentEmail = "studentEmail";
-		String studentAddress = "studentAddress";
-		newStudentObject = new StudentModels(studentName, studentEmail, studentAddress);
-		studentDaoSignaturesObject.saveStudentObject(newStudentObject);
+	public StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress) {
+		studentDaoSignaturesObject.saveStudentObject(newStudentObject = new StudentModels(studentName, studentEmail, studentAddress));
 		return newStudentObject;
 	}
 
 	@Override
-	public CourseModels registerNewCourse() {
-		String courseName = "Math"; 
-		String studentEmail = "studentEmail";
-		String studentAddress = "studentAddress";
-		newCourseObject = new CourseModels(courseName, LocalDate courseStartDate, int courseWeekDuration);
-		courseDaoSignaturesObject.saveCourseObject(newCourseObject);
+	public CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration) {
+		courseDaoSignaturesObject.saveCourseObject(newCourseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration));
 		return newCourseObject;
 	}
 
@@ -100,7 +92,6 @@ public class SchoolService implements SchoolServiceSignatures {
 	@Override
 	public List<CourseModels> findCourseByName(String courseName) {
 		return null;
-
 	}
 
 	@Override
@@ -108,6 +99,4 @@ public class SchoolService implements SchoolServiceSignatures {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 }

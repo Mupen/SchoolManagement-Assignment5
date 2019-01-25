@@ -11,7 +11,11 @@ public interface StudentDaoSignatures {
 	StudentModels findStudentById(int studentId);
 	
 	List<StudentModels> findStudentByName(String studentName);
+	
+	List<StudentModels> findStudentByEmail(String studentEmail);
 
 	void removeAllStudent();
+
+
 
 }

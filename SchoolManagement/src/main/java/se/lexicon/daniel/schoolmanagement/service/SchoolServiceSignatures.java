@@ -8,9 +8,9 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public interface SchoolServiceSignatures {
 
-	StudentModels registerNewStudent();
+	StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress);
 
-	CourseModels registerNewCourse();
+	CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration);
 
 	StudentModels registerNewStudentToCourse(StudentModels student, CourseModels courses);
 	
@@ -31,4 +31,6 @@ public interface SchoolServiceSignatures {
 	List<StudentModels> findAllStudentModels();
 
 	List<CourseModels> findAllCourseModels();
+
+	
 }
