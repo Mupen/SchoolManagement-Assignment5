@@ -9,28 +9,28 @@ import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 public interface SchoolServiceSignatures {
 
 	StudentModels registerNewStudent(String studentName, String studentEmail, String studentAddress);
-
 	CourseModels registerNewCourse(String courseName, LocalDate courseStartDate, int courseWeekDuration);
 
-	StudentModels registerNewStudentToCourse(StudentModels student, CourseModels courses);
+	StudentModels registerNewStudentToCourse(StudentModels studentObject, CourseModels coursesObject);
+	StudentModels removeStudentFromCourse(StudentModels studentObject, CourseModels coursesObject);
 	
-	StudentModels removeStudentFromCourse(StudentModels student, CourseModels courses);
-
-	StudentModels removeCourse(CourseModels courses);
-
-	CourseModels removeStudent(StudentModels student);
-
-	StudentModels findStudentById(int id);
-
-	CourseModels findCourseById(int id);
+	StudentModels findStudentById(int studentId);
+	CourseModels findCourseById(int courseId);
 
 	List<CourseModels> findCourseByName(String courseName);
-
 	List<StudentModels> findStudentByName(String studentName);
+	
+	List<StudentModels> findStudentByEmail(String studentEmail);	
 
 	List<StudentModels> findAllStudentModels();
-
 	List<CourseModels> findAllCourseModels();
+	
+	void removeAllCourse();
+	void removeAllStudent();
+	
+	void removeStudent(StudentModels studentObject);
+	void removeCourse(CourseModels courseObject);
+	
 
 	
 }

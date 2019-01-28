@@ -30,6 +30,7 @@ public class CourseDao implements CourseDaoSignatures {
 		}		
 	}
 	
+	
 	@Override
 	public CourseModels findCourseById(int courseId) {
 		for(CourseModels courseObject : courseStorage) {
@@ -54,5 +55,23 @@ public class CourseDao implements CourseDaoSignatures {
 	public void removeAllCourse() {
 		courseStorage.clear();
 	}
+	
+	public void removeCourse(CourseModels courseObject) {
+		System.out.println("--------- Course with ---------"
+				+ "\n id: " + courseObject.getCourseId() 
+				+ "\n name: " + courseObject.getCourseName()
+				+ "\n Have been deleted");
+		courseStorage.remove(courseObject);
+	}
 
+
+	public List<CourseModels> findAllCourseModels() {
+		List<CourseModels> objectList = new ArrayList<>();
+		for(CourseModels courseObject : courseStorage) {
+			if(!courseObject.equals(null)) {
+				objectList.add(courseObject);
+			}
+		}
+		return objectList;		
+	}
 }

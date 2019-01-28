@@ -18,13 +18,38 @@ public class ConsoleMenuController {
 	public ConsoleMenuController() {
 
 		System.out.println("");
-		System.out.println("|--------------------------------|");
-		System.out.println("| School Management Assignment 5 |");
-		System.out.println("|--------------------------------|");
+		System.out.println("|--------------------------------------|");
+		System.out.println("|    School Management Assignment 5    |");
+		System.out.println("|--------------------------------------|");
 		System.out.println("");
 
 		schoolServiceInstance = SchoolService.getSchoolServiceInstance();
-
+		
+		schoolServiceInstance.registerNewStudent("Roger", "Roger@Gmail.com", "Nygatan 350 01 Växjö");
+		schoolServiceInstance.registerNewStudent("Lamar", "Lamar@Gmail.com", "Nygatan 350 02 Växjö");
+		schoolServiceInstance.registerNewStudent("Wyatt", "Wyatt@Gmail.com", "Nygatan 350 03 Växjö");
+		schoolServiceInstance.registerNewStudent("Sergio", "Sergio@Gmail.com", "Nygatan 350 04 Växjö");
+		schoolServiceInstance.registerNewStudent("Keith", "Keith@Gmail.com", "Nygatan 350 05 Växjö");
+		schoolServiceInstance.registerNewStudent("Kevin", "Kevin@Gmail.com", "Nygatan 350 06 Växjö");
+		schoolServiceInstance.registerNewStudent("Peter", "Peter@Gmail.com", "Nygatan 350 07 Växjö");
+		schoolServiceInstance.registerNewStudent("Wiley", "Wiley@Gmail.com", "Nygatan 350 08 Växjö");
+		schoolServiceInstance.registerNewStudent("Jeffrey", "Jeffrey@Gmail.com", "Nygatan 350 09 Växjö");
+		schoolServiceInstance.registerNewStudent("Jerry", "Jerry@Gmail.com", "Nygatan 350 10 Växjö");
+		schoolServiceInstance.registerNewStudent("Michael", "Michael@Gmail.com", "Nygatan 350 11 Växjö");
+		schoolServiceInstance.registerNewStudent("Jeremy", "Jeremy@Gmail.com", "Nygatan 350 12 Växjö");
+		schoolServiceInstance.registerNewStudent("Roderick", "Roderick@Gmail.com", "Nygatan 350 13 Växjö");
+		schoolServiceInstance.registerNewStudent("Tyler", "Tyler@Gmail.com", "Nygatan 350 14 Växjö");
+		schoolServiceInstance.registerNewStudent("Travis", "Travis@Gmail.com", "Nygatan 350 15 Växjö");
+		schoolServiceInstance.registerNewStudent("Gary", "Gary@Gmail.com", "Nygatan 350 16 Växjö");
+		schoolServiceInstance.registerNewStudent("James", "James@Gmail.com", "Nygatan 350 17 Växjö");
+		schoolServiceInstance.registerNewStudent("Frank", "Frank@Gmail.com", "Nygatan 350 18 Växjö");
+		schoolServiceInstance.registerNewStudent("Harold", "Harold@Gmail.com", "Nygatan 350 19 Växjö");
+		schoolServiceInstance.registerNewStudent("Brian ", "Brian@Gmail.com", "Nygatan 350 20 Växjö");
+		
+		schoolServiceInstance.registerNewCourse("Math", LocalDate.parse("2018-01-01"), 8);
+		schoolServiceInstance.registerNewCourse("English", LocalDate.parse("2018-03-07"), 12);
+		schoolServiceInstance.registerNewCourse("Java", LocalDate.parse("2018-06-14"), 16);
+		schoolServiceInstance.registerNewCourse(".Net", LocalDate.parse("2018-09-21"), 18);
 		running = true;
 	}
 
@@ -45,17 +70,16 @@ public class ConsoleMenuController {
 	public void startingUserInterface() {
 		String userInput = KeyboardInput.getString(" What action do you want to take? \n" +
 				"\n" +
-				" [View] view student or course list \n" +
-				" [Edit] Edit student or coruse. But you will need to know name or id \n" +
-				" [Create] Create student or coruses. You will need to fill in its values \n" +
-				" [Remove] Remove student or coruse or student from course but you will need to know it's name or id \n" +
-				" [Quit] Immediately terminate the program...\n" +
+				" [View]   View student or course list \n" +
+				" [Edit]   Edit student or coruse. (Identifier needed) \n" +
+				" [Create] Create student or coruses. (Input needed) \n" +
+				" [Remove] Remove student or coruse or student from course (Identifier needed) \n" +
+				" [Quit]   Immediately terminate the program...\n" +
 				"\n" +
 				" Your selection... "
 				);
 		switch (userInput.toLowerCase()) {
 		case "view":
-
 			System.out.println("");
 			System.out.println("|-------------------------|");
 			System.out.println("| View student or courses |");
@@ -104,73 +128,68 @@ public class ConsoleMenuController {
 
 		}
 	}
-
 	public void viewUserInterface() {
 		boolean stopLoop = false;
 		while(!stopLoop) {
 			String userInput = KeyboardInput.getString(" What action do you want to take? \n" +
 					"\n" +
-					" [Student] View Specific student. (name needed) \n" +
+					" [Student]  View specific student. (Identifier needed) \n" +
 					" [Students] View student list \n" +
-					" [Course] View Specific coruse. (name needed) \n" +
-					" [Courses] View coruse list \n" +
-					" [Back] Immediately go back to starting menu \n" +
+					" [Course]   View specific coruse. (Identifier needed) \n" +
+					" [Courses]  View coruse list \n" +
+					" [Back]     Immediately go back to starting menu \n" +
 					"\n" +
 					" Your selection... "
 					);
 			switch (userInput.toLowerCase()) {
+
 			case "student":
 				System.out.println("");
 				System.out.println("|--------------------------|");
 				System.out.println("| View Specific student... |");
 				System.out.println("|--------------------------|");
 				System.out.println("");
-
 				String studentName = KeyboardInput.getString(" Write the name of the student! \n" + " Your selection... ");
-				schoolServiceInstance.findStudentByName(studentName);
-
+				System.out.println(schoolServiceInstance.findStudentByName(studentName));
 				break;
+				
 			case "students":
 				System.out.println("");
 				System.out.println("|----------------------|");
 				System.out.println("| View student list... |");
 				System.out.println("|----------------------|");
 				System.out.println("");
-
-				schoolServiceInstance.findAllStudentModels();
-
+				System.out.println(schoolServiceInstance.findAllStudentModels().toString());
 				break;
+			
 			case "course":
 				System.out.println("");
 				System.out.println("|-------------------------|");
 				System.out.println("| View Specific coruse... |");
 				System.out.println("|-------------------------|");
 				System.out.println("");
-
 				String courseName = KeyboardInput.getString(" Write the name of the coruse! \n" + " Your selection... ");
 				schoolServiceInstance.findCourseByName(courseName);
-
 				break;
+			
 			case "courses":
 				System.out.println("");
 				System.out.println("|---------------------|");
 				System.out.println("| View coruse list... |");
 				System.out.println("|---------------------|");
 				System.out.println("");
-
-				schoolServiceInstance.findAllCourseModels();
-
+				schoolServiceInstance.findAllCourseModels().toString();
 				break;
+			
 			case "back":
 				System.out.println("");
 				System.out.println("|--------------------------------|");
 				System.out.println("| Going back to starting menu... |");
 				System.out.println("|--------------------------------|");
 				System.out.println("");
-				
 				stopLoop = true;
-				
 				break;
+				
 			default:
 				System.out.println("");
 				System.out.println("|-------------------|");
@@ -180,9 +199,8 @@ public class ConsoleMenuController {
 			}
 			if (stopLoop) break;
 		}
-
 	}
-
+	
 	public void editUserInterface() {
 		boolean stopLoop = false;
 		while(!stopLoop) {
@@ -215,6 +233,7 @@ public class ConsoleMenuController {
 				System.out.println("| Going back to starting menu... |");
 				System.out.println("|--------------------------------|");
 				System.out.println("");
+				stopLoop = true;
 				break;
 			default:
 				System.out.println("");
@@ -226,7 +245,6 @@ public class ConsoleMenuController {
 			if (stopLoop) break;
 		}
 	}
-
 	public void createUserInterface() {
 		boolean stopLoop = false;
 		while(!stopLoop) {
@@ -282,6 +300,7 @@ public class ConsoleMenuController {
 				System.out.println("| Going back to starting menu... |");
 				System.out.println("|--------------------------------|");
 				System.out.println("");
+				stopLoop = true;
 				break;
 			default:
 				System.out.println("");
@@ -333,6 +352,7 @@ public class ConsoleMenuController {
 				System.out.println("| Going back to starting menu... |");
 				System.out.println("|--------------------------------|");
 				System.out.println("");
+				stopLoop = true;
 				break;
 			default:
 				System.out.println("");

@@ -1,7 +1,6 @@
 package se.lexicon.daniel.schoolmanagement.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import se.lexicon.daniel.schoolmanagement.data.CourseDao;
@@ -40,63 +39,82 @@ public class SchoolService implements SchoolServiceSignatures {
 		courseDaoSignaturesObject.saveCourseObject(newCourseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration));
 		return newCourseObject;
 	}
-
-	@Override
-	public StudentModels registerNewStudentToCourse(StudentModels student, CourseModels courses) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public StudentModels removeStudentFromCourse(StudentModels student, CourseModels courses) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public StudentModels removeCourse(CourseModels courses) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CourseModels removeStudent(StudentModels student) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<StudentModels> findAllStudentModels() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public List<CourseModels> findAllCourseModels() {
-		// TODO Auto-generated method stub
-		return null;
+		return courseDaoSignaturesObject.findAllCourseModels();
 	}
 
 	@Override
-	public StudentModels findStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public CourseModels findCourseById(int courseId) {
+		return courseDaoSignaturesObject.findCourseById(courseId);
 	}
-
-	@Override
-	public CourseModels findCourseById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public List<CourseModels> findCourseByName(String courseName) {
-		return null;
+		return courseDaoSignaturesObject.findCourseByName(courseName);
+	}
+	
+	@Override
+	public StudentModels findStudentById(int studentId) {
+		return studentDaoSignaturesObject.findStudentById(studentId);
 	}
 
 	@Override
 	public List<StudentModels> findStudentByName(String studentName) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDaoSignaturesObject.findStudentByName(studentName);
 	}
+	
+	@Override
+	public List<StudentModels> findStudentByEmail(String studentEmail) {
+		return studentDaoSignaturesObject.findStudentByEmail(studentEmail);
+	}
+	
+	@Override
+	public List<StudentModels> findAllStudentModels() {
+		return studentDaoSignaturesObject.findAllStudentModels();
+	}
+	
+	@Override
+	public void removeAllCourse() {
+		courseDaoSignaturesObject.removeAllCourse();
+	}
+	
+	@Override
+	public void removeAllStudent() {
+		studentDaoSignaturesObject.removeAllStudent();
+	}
+	
+	@Override
+	public void removeCourse(CourseModels courseObject) {
+		courseDaoSignaturesObject.removeCourse(courseObject);
+	}
+
+	@Override
+	public void removeStudent(StudentModels studentObject) {
+		studentDaoSignaturesObject.removeStudent(studentObject);
+	}
+	
+	@Override
+	public StudentModels registerNewStudentToCourse(StudentModels studentObject, CourseModels courseObject) {
+		if(courseObject == null || studentObject == null) {
+			throw new IllegalArgumentException();
+		}
+		else {
+			courseObject.registerNewStudentToCourse(studentObject);
+			return studentObject;
+		}	
+	}
+
+	@Override
+	public StudentModels removeStudentFromCourse(StudentModels studentObject, CourseModels courseObject) {
+		if(courseObject == null || studentObject == null) {
+			throw new IllegalArgumentException();
+		}
+		else {
+			courseObject.removeStudentFromCourse(studentObject);
+			return studentObject;
+		}	
+	}
+	
+
 }

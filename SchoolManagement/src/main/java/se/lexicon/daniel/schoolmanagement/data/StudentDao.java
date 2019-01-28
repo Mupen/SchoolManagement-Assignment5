@@ -65,5 +65,25 @@ public class StudentDao implements StudentDaoSignatures {
 	public void removeAllStudent() {
 		studentStorage.clear();
 	}
+	
+	public void removeStudent(StudentModels studentObject) {
+		System.out.println("--------- student with ---------"
+				+ "\n id: " + studentObject.getStudentId() 
+				+ "\n name: " + studentObject.getStudentName()
+				+ "\n Have been deleted");
+		studentStorage.remove(studentObject);
 
+	}
+
+	@Override
+	public List<StudentModels> findAllStudentModels() {
+		List<StudentModels> objectList = new ArrayList<>();
+		for(StudentModels studentObject : studentStorage) {
+			if(!studentObject.equals(null)) {
+				objectList.add(studentObject);
+			}
+		}
+		return objectList;		
+	}
 }
+

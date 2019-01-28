@@ -13,8 +13,12 @@ public interface StudentDaoSignatures {
 	List<StudentModels> findStudentByName(String studentName);
 	
 	List<StudentModels> findStudentByEmail(String studentEmail);
+	
+	List<StudentModels> findAllStudentModels();
 
 	void removeAllStudent();
+	
+	void removeStudent(StudentModels studentObject);
 
 
 

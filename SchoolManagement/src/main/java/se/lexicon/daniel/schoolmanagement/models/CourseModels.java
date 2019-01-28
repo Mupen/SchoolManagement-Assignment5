@@ -11,7 +11,7 @@ public class CourseModels {
 	private String courseName;
 	private LocalDate courseStartDate;
 	private int courseWeekDuration;
-	private List<StudentModels> studentList;
+	private List<StudentModels> studentList = new ArrayList<>();
 	
 	public CourseModels(String courseName, LocalDate courseStartDate, int courseWeekDuration) {
 		this.courseId = ++sequencer;
@@ -19,6 +19,18 @@ public class CourseModels {
 		this.courseStartDate = courseStartDate;
 		this.courseWeekDuration = courseWeekDuration;
 		studentList = new ArrayList<>();
+	}
+	
+	public void registerNewStudentToCourse(StudentModels studentObject) {
+		if (!studentList.contains(studentObject)) {
+			this.studentList.add(studentObject);
+		}
+	}
+	
+	public void removeStudentFromCourse(StudentModels studentObject) {
+		if (!studentList.contains(studentObject)) {
+			this.studentList.add(studentObject);
+		}
 	}
 
 	public int getCourseId() {
@@ -51,5 +63,10 @@ public class CourseModels {
 
 	public List<StudentModels> getStudentList() {
 		return studentList;
+	}
+	
+	@Override
+	public String toString() {
+		return "Course [Id=" + courseId + ", Name=" + courseName + ", Start=" + courseStartDate + ", Duration=" + courseWeekDuration + "]";
 	}
 }

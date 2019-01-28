@@ -12,5 +12,10 @@ public interface CourseDaoSignatures {
 	
 	List<CourseModels> findCourseByName(String courseName);
 	
+	List<CourseModels> findAllCourseModels();
+	
 	void removeAllCourse();
+	
+	void removeCourse(CourseModels courseObject);
+
 }
