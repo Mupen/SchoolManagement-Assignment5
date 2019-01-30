@@ -116,5 +116,42 @@ public class SchoolService implements SchoolServiceSignatures {
 		}	
 	}
 	
+	@Override
+	public StudentModels editStudentNameByName(StudentModels studentObject, String studentName) {
+		studentObject.setStudentName(studentName);
+		return studentObject;
+	}
+	
+	@Override
+	public StudentModels editStudentEmailByName(StudentModels studentObject, String studentEmail) {
+		studentObject.setStudentEmail(studentEmail);
+		return studentObject;
+	}
+	
+	@Override
+	public StudentModels editStudentAddressByName(StudentModels studentObject, String studentAddress) {
+		studentObject.setStudentAddress(studentAddress);
+		return studentObject;
+	}
+	
+	@Override
+	public CourseModels editCoursetNameByName(CourseModels courseObject, String courseName) {
+		courseObject.setCourseName(courseName);
+		return courseObject;
 
+	}
+	
+	@Override
+	public CourseModels editCoursetStartDateByName(CourseModels courseObject, LocalDate courseStartDate) {
+		courseObject.setStartDate(courseStartDate);
+		return courseObject;
+
+	}
+	
+	@Override
+	public CourseModels editCoursetWeekDurationByName(CourseModels courseObject, int courseWeekDuration) {
+		courseObject.setWeekDuration(courseWeekDuration);
+		return courseObject;
+
+	}
 }

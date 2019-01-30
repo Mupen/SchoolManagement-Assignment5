@@ -31,6 +31,17 @@ public interface SchoolServiceSignatures {
 	void removeStudent(StudentModels studentObject);
 	void removeCourse(CourseModels courseObject);
 	
+	StudentModels editStudentNameByName(StudentModels studentObject, String studentName);
+	StudentModels editStudentEmailByName(StudentModels studentObject, String studentEmail);
+	StudentModels editStudentAddressByName(StudentModels studentObject, String studentAddress);
+	
+	CourseModels editCoursetWeekDurationByName(CourseModels courseObject, int courseWeekDuration);
+	CourseModels editCoursetStartDateByName(CourseModels courseObject, LocalDate courseStartDate);
+	CourseModels editCoursetNameByName(CourseModels courseObject, String courseName);
+
+
+
+	
 
 	
 }

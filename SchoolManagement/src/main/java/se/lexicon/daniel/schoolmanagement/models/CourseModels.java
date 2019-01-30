@@ -67,6 +67,6 @@ public class CourseModels {
 	
 	@Override
 	public String toString() {
-		return "Course [Id=" + courseId + ", Name=" + courseName + ", Start=" + courseStartDate + ", Duration=" + courseWeekDuration + "]";
+		return "\n [Course id]: " + courseId + "\n [Name]: " + courseName + "\n [Course starting date]: " + courseStartDate + "\n [Course week's duration]: " + courseWeekDuration + "\n\n";
 	}
 }

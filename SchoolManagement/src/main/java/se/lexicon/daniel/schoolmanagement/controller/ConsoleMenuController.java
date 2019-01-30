@@ -1,7 +1,9 @@
 package se.lexicon.daniel.schoolmanagement.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 import se.lexicon.daniel.schoolmanagement.service.SchoolService;
 import se.lexicon.daniel.schoolmanagement.service.SchoolServiceSignatures;
 import se.lexicon.daniel.schoolmanagement.utility.KeyboardInput;
@@ -150,7 +152,7 @@ public class ConsoleMenuController {
 				System.out.println("|--------------------------|");
 				System.out.println("");
 				String studentName = KeyboardInput.getString(" Write the name of the student! \n" + " Your selection... ");
-				System.out.println(schoolServiceInstance.findStudentByName(studentName));
+				System.out.println(schoolServiceInstance.findStudentByName(studentName.toLowerCase().toLowerCase()));
 				break;
 				
 			case "students":
@@ -159,7 +161,7 @@ public class ConsoleMenuController {
 				System.out.println("| View student list... |");
 				System.out.println("|----------------------|");
 				System.out.println("");
-				System.out.println(schoolServiceInstance.findAllStudentModels().toString());
+				System.out.println(schoolServiceInstance.findAllStudentModels().toString().toLowerCase());
 				break;
 			
 			case "course":
@@ -169,7 +171,7 @@ public class ConsoleMenuController {
 				System.out.println("|-------------------------|");
 				System.out.println("");
 				String courseName = KeyboardInput.getString(" Write the name of the coruse! \n" + " Your selection... ");
-				schoolServiceInstance.findCourseByName(courseName);
+				System.out.println(schoolServiceInstance.findCourseByName(courseName.toLowerCase().toLowerCase()));
 				break;
 			
 			case "courses":
@@ -178,7 +180,7 @@ public class ConsoleMenuController {
 				System.out.println("| View coruse list... |");
 				System.out.println("|---------------------|");
 				System.out.println("");
-				schoolServiceInstance.findAllCourseModels().toString();
+				System.out.println(schoolServiceInstance.findAllCourseModels().toString().toLowerCase());
 				break;
 			
 			case "back":
@@ -219,6 +221,10 @@ public class ConsoleMenuController {
 				System.out.println("| Edit Specific student... |");
 				System.out.println("|--------------------------|");
 				System.out.println("");
+				String studentName = KeyboardInput.getString(" Write the name of the student! \n" + " Your selection... ");
+				schoolServiceInstance.findStudentByName(studentName);
+				schoolServiceInstance.
+				
 				break;
 			case "course":
 				System.out.println("");

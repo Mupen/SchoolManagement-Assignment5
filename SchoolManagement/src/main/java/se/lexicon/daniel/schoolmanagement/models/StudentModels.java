@@ -86,7 +86,7 @@ public class StudentModels {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + studentId + ", name=" + studentName + ", email=" + studentEmail + ", address=" + studentAddress + "]";
+		return "\n [Student id]: " + studentId + "\n [name]: " + studentName + "\n [email]: " + studentEmail + "\n [address]: " + studentAddress + "\n\n";
 	}
 
 

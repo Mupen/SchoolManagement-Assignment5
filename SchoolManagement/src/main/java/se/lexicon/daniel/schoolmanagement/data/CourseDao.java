@@ -23,6 +23,7 @@ public class CourseDao implements CourseDaoSignatures {
 		}			
 		if(findCourseById(courseObject.getCourseId()) != null) {
 			throw new IllegalArgumentException("Object with same id exists in storage");
+			
 		}
 		else {
 			courseStorage.add(courseObject);
