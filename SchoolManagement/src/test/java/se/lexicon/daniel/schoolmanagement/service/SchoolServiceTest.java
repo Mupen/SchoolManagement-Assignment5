@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import se.lexicon.daniel.ArenaFighter_Assignment3.service.FightingService;
+import se.lexicon.daniel.ArenaFighter_Assignment3.service.FightingServiceSignatures;
 import se.lexicon.daniel.schoolmanagement.data.CourseDao;
 import se.lexicon.daniel.schoolmanagement.data.CourseDaoSignatures;
 import se.lexicon.daniel.schoolmanagement.data.StudentDao;

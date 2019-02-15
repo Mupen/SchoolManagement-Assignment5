@@ -90,7 +90,22 @@ public class StudentModels {
 	}
 
 
+	public String stringBuilder() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n *** Student List *** \n");
+		
+		sb.append(" Student id = ");
+		sb.append(studentId + "\n");
+		
+		sb.append(" Name = ");
+		sb.append(studentName + "\n");
+		
+		sb.append(" email = ");
+		sb.append(studentEmail + "\n");
+		
+		sb.append(" address = ");
+		sb.append(studentAddress + "\n");
 
-
-	
+		return sb.toString(); 
+	}
 }

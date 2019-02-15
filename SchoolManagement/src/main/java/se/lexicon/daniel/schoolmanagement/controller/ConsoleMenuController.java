@@ -1,9 +1,7 @@
 package se.lexicon.daniel.schoolmanagement.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 import se.lexicon.daniel.schoolmanagement.service.SchoolService;
 import se.lexicon.daniel.schoolmanagement.service.SchoolServiceSignatures;
 import se.lexicon.daniel.schoolmanagement.utility.KeyboardInput;
@@ -26,7 +24,6 @@ public class ConsoleMenuController {
 		System.out.println("");
 
 		schoolServiceInstance = SchoolService.getSchoolServiceInstance();
-		
 		schoolServiceInstance.registerNewStudent("Roger", "Roger@Gmail.com", "Nygatan 350 01 Växjö");
 		schoolServiceInstance.registerNewStudent("Lamar", "Lamar@Gmail.com", "Nygatan 350 02 Växjö");
 		schoolServiceInstance.registerNewStudent("Wyatt", "Wyatt@Gmail.com", "Nygatan 350 03 Växjö");
@@ -64,9 +61,7 @@ public class ConsoleMenuController {
 	}
 
 	public void run() {
-
 		startingUserInterface(); // What action do you want to take?
-
 	}
 
 	public void startingUserInterface() {
@@ -202,7 +197,6 @@ public class ConsoleMenuController {
 			if (stopLoop) break;
 		}
 	}
-	
 	public void editUserInterface() {
 		boolean stopLoop = false;
 		while(!stopLoop) {
@@ -223,8 +217,6 @@ public class ConsoleMenuController {
 				System.out.println("");
 				String studentName = KeyboardInput.getString(" Write the name of the student! \n" + " Your selection... ");
 				schoolServiceInstance.findStudentByName(studentName);
-				schoolServiceInstance.
-				
 				break;
 			case "course":
 				System.out.println("");
@@ -251,6 +243,7 @@ public class ConsoleMenuController {
 			if (stopLoop) break;
 		}
 	}
+	
 	public void createUserInterface() {
 		boolean stopLoop = false;
 		while(!stopLoop) {

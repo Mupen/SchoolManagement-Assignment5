@@ -65,8 +65,22 @@ public class CourseModels {
 		return studentList;
 	}
 	
-	@Override
-	public String toString() {
-		return "\n [Course id]: " + courseId + "\n [Name]: " + courseName + "\n [Course starting date]: " + courseStartDate + "\n [Course week's duration]: " + courseWeekDuration + "\n\n";
+	public String stringBuilder() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n *** Course List *** \n");
+		
+		sb.append(" Course id = ");
+		sb.append(courseId + "\n");
+		
+		sb.append(" Name = ");
+		sb.append(courseName + "\n");
+		
+		sb.append(" starting date = ");
+		sb.append(courseStartDate + "\n");
+		
+		sb.append(" week's duration = ");
+		sb.append(courseWeekDuration + "\n");
+
+		return sb.toString(); 
 	}
 }
