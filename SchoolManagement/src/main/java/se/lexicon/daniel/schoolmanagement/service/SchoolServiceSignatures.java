@@ -2,6 +2,7 @@ package se.lexicon.daniel.schoolmanagement.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
@@ -31,17 +32,15 @@ public interface SchoolServiceSignatures {
 	void removeStudent(StudentModels studentObject);
 	void removeCourse(CourseModels courseObject);
 	
-	StudentModels editStudentNameByName(StudentModels studentObject, String studentName);
-	StudentModels editStudentEmailByName(StudentModels studentObject, String studentEmail);
-	StudentModels editStudentAddressByName(StudentModels studentObject, String studentAddress);
+	StudentModels editStudentNameByName(StudentModels editObjectStudentModels, String studentName);
+	StudentModels editStudentEmailByName(StudentModels editObjectStudentModels, String studentEmail);
+	StudentModels editStudentAddressByName(StudentModels editObjectStudentModels, String studentAddress);
+
+	CourseModels editCoursetNameByName(CourseModels editObjectCourseModels, String courseName);
+	CourseModels editCoursetStartDateByName(CourseModels editObjectCourseModels, LocalDate courseStartDate);
+	CourseModels editCoursetWeekDurationByName(CourseModels editObjectCourseModels, int courseWeekDuration);
 	
-	CourseModels editCoursetWeekDurationByName(CourseModels courseObject, int courseWeekDuration);
-	CourseModels editCoursetStartDateByName(CourseModels courseObject, LocalDate courseStartDate);
-	CourseModels editCoursetNameByName(CourseModels courseObject, String courseName);
-
-
-
-	
-
+	List<CourseModels> findCourseByIdFromNameList(List<CourseModels> objectList, int courseId);
+	List<StudentModels> findStudentByIdFromNameList(List<StudentModels> objectList, int studentId);
 	
 }

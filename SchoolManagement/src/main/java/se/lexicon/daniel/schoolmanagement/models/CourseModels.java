@@ -65,6 +65,11 @@ public class CourseModels {
 		return studentList;
 	}
 	
+	@Override
+	public String toString() {
+		return"\n *** Course List *** \n [Course id]: " + courseId + "\n [name]: " + courseName + "\n [starting date]: " + courseStartDate + "\n [week's duration]: " + courseWeekDuration + "\n";
+	}
+	
 	public String stringBuilder() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("\n *** Course List *** \n");

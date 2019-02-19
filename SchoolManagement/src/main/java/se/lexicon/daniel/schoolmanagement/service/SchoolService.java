@@ -39,6 +39,7 @@ public class SchoolService implements SchoolServiceSignatures {
 		courseDaoSignaturesObject.saveCourseObject(newCourseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration));
 		return newCourseObject;
 	}
+	
 	@Override
 	public List<CourseModels> findAllCourseModels() {
 		return courseDaoSignaturesObject.findAllCourseModels();
@@ -55,6 +56,11 @@ public class SchoolService implements SchoolServiceSignatures {
 	}
 	
 	@Override
+	public List<CourseModels> findCourseByIdFromNameList(List<CourseModels> objectList, int courseId) {
+		return courseDaoSignaturesObject.findCourseByIdFromNameList(objectList, courseId);
+	}
+	
+	@Override
 	public StudentModels findStudentById(int studentId) {
 		return studentDaoSignaturesObject.findStudentById(studentId);
 	}
@@ -67,6 +73,12 @@ public class SchoolService implements SchoolServiceSignatures {
 	@Override
 	public List<StudentModels> findStudentByEmail(String studentEmail) {
 		return studentDaoSignaturesObject.findStudentByEmail(studentEmail);
+	}
+	
+	
+	@Override
+	public List<StudentModels> findStudentByIdFromNameList(List<StudentModels> objectList, int studentId) {
+		return studentDaoSignaturesObject.findStudentByIdFromNameList(objectList, studentId);
 	}
 	
 	@Override
@@ -134,6 +146,7 @@ public class SchoolService implements SchoolServiceSignatures {
 		return studentObject;
 	}
 	
+	
 	@Override
 	public CourseModels editCoursetNameByName(CourseModels courseObject, String courseName) {
 		courseObject.setCourseName(courseName);
@@ -154,4 +167,5 @@ public class SchoolService implements SchoolServiceSignatures {
 		return courseObject;
 
 	}
+
 }

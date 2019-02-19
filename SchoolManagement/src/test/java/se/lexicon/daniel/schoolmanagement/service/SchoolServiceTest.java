@@ -62,19 +62,26 @@ public class SchoolServiceTest {
 	}
 	
 	@Test
-	public void test_registerNewStudent() {
-		studentObject = new StudentModels(studentName, studentEmail, studentAddress);
-		assertEquals(studentObject, studentDaoDependency.saveStudentObject(studentObject));
+	public void test_registerNewStudent_SaveObjectToList() {
+		String studentName = "Erik";
+		String studentEmail = "Erik@Gmail.com";
+		String studentAddress = "Erik street 6 34262 Moheda";
+		schoolServiceInterfaceDependency.registerNewStudent(studentName, studentEmail, studentAddress);
+		StudentModels studentInStorage = schoolServiceInterfaceDependency.findStudentByName(studentName).get(0);
+		assertEquals(studentName, studentInStorage.getStudentName());
+		assertEquals(studentEmail, studentInStorage.getStudentEmail());
 	}
 	
 	@Test
-	public void test_registerNewCourse_SaveObjectToList() {
+	public void test_registerc_SaveObjectToList() {
 		courseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration);
 		assertEquals(courseObject, courseDaoDependency.saveCourseObject(courseObject));
+		schoolServiceInterfaceDependency.registerNewCourse(courseName, courseStartDate, courseWeekDuration)
 	}
 	
 	@Test
 	public void test_registerNewStudentToCourse() {
+		
 		
 	}
 	

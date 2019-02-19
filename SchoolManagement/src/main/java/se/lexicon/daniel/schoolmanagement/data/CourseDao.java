@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
+import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class CourseDao implements CourseDaoSignatures {
 
@@ -52,6 +53,18 @@ public class CourseDao implements CourseDaoSignatures {
 		}
 		return resultList;		
 	}
+	
+	@Override
+	public List<CourseModels> findCourseByIdFromNameList(List<CourseModels> objectList, int courseId) {
+		List<CourseModels> newObjectList = new ArrayList<>();
+		for(CourseModels courseObject : objectList) {
+			if(courseObject.getCourseId() == courseId) {
+				newObjectList.add(courseObject);
+			}
+		}
+		return newObjectList;		
+	}
+	
 	
 	public void removeAllCourse() {
 		courseStorage.clear();

@@ -1,6 +1,6 @@
 package se.lexicon.daniel.schoolmanagement.models;
 
-public class StudentModels {
+public class StudentModels  {
 	
 	private static int sequencer = 0;
 	private final int studentId;
@@ -86,13 +86,12 @@ public class StudentModels {
 
 	@Override
 	public String toString() {
-		return "\n [Student id]: " + studentId + "\n [name]: " + studentName + "\n [email]: " + studentEmail + "\n [address]: " + studentAddress + "\n\n";
+		return "\n *** Student List toString *** \n [Student id]: " + studentId + "\n [name]: " + studentName + "\n [email]: " + studentEmail + "\n [address]: " + studentAddress + "\n\n";
 	}
-
 
 	public String stringBuilder() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\n *** Student List *** \n");
+		sb.append("\n *** Student List stringBuilder *** \n");
 		
 		sb.append(" Student id = ");
 		sb.append(studentId + "\n");

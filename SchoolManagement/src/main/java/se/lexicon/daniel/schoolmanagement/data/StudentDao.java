@@ -39,7 +39,18 @@ public class StudentDao implements StudentDaoSignatures {
 		}
 		return null;
 	}
-
+	
+	@Override
+	public List<StudentModels> findStudentByName(String studentName) {
+		List<StudentModels> objectList = new ArrayList<>();
+		for(StudentModels studentObject : studentStorage) {
+			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
+				objectList.add(studentObject);
+			}
+		}
+		return objectList;		
+	}
+	
 	@Override
 	public List<StudentModels> findStudentByEmail(String studentEmail) {
 		List<StudentModels> objectList = new ArrayList<>();
@@ -52,15 +63,16 @@ public class StudentDao implements StudentDaoSignatures {
 	}
 	
 	@Override
-	public List<StudentModels> findStudentByName(String studentName) {
-		List<StudentModels> objectList = new ArrayList<>();
-		for(StudentModels studentObject : studentStorage) {
-			if(studentObject.getStudentName().equalsIgnoreCase(studentName)) {
-				objectList.add(studentObject);
+	public List<StudentModels> findStudentByIdFromNameList(List<StudentModels> objectList, int studentId) {
+		List<StudentModels> newObjectList = new ArrayList<>();
+		for(StudentModels studentObject : objectList) {
+			if(studentObject.getStudentId() == studentId) {
+				newObjectList.add(studentObject);
 			}
 		}
-		return objectList;		
+			return null;
 	}
+	
 	
 	public void removeAllStudent() {
 		studentStorage.clear();
@@ -85,5 +97,6 @@ public class StudentDao implements StudentDaoSignatures {
 		}
 		return objectList;		
 	}
+
 }
 

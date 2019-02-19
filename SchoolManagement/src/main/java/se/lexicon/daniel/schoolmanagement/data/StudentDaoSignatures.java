@@ -2,6 +2,7 @@ package se.lexicon.daniel.schoolmanagement.data;
 
 import java.util.List;
 
+import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public interface StudentDaoSignatures {
@@ -19,6 +20,8 @@ public interface StudentDaoSignatures {
 	void removeAllStudent();
 	
 	void removeStudent(StudentModels studentObject);
+
+	List<StudentModels> findStudentByIdFromNameList(List<StudentModels> objectList, int studentId);
 
 
 

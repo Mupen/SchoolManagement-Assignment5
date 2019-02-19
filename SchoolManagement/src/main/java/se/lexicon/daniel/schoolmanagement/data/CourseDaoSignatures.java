@@ -18,4 +18,7 @@ public interface CourseDaoSignatures {
 	
 	void removeCourse(CourseModels courseObject);
 
+	List<CourseModels> findCourseByIdFromNameList(List<CourseModels> objectList, int courseId);
+
+
 }
