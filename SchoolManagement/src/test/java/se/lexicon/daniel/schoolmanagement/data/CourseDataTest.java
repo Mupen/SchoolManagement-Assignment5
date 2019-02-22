@@ -54,8 +54,8 @@ public class CourseDataTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void test_save_Course_object_duplicate_throw_IllegalArgumentException() {
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject1);
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject2);	
+		CourseDaoInterfaceTest.saveCourseObject(testCourseObject1);	
+		CourseDaoInterfaceTest.saveCourseObject(testCourseObject2);
 	}
 
 	@Test

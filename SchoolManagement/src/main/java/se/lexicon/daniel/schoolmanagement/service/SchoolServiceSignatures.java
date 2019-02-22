@@ -2,7 +2,6 @@ package se.lexicon.daniel.schoolmanagement.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Stream;
 
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 import se.lexicon.daniel.schoolmanagement.models.StudentModels;

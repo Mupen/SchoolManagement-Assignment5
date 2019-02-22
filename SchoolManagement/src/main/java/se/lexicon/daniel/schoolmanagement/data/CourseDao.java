@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.lexicon.daniel.schoolmanagement.models.CourseModels;
-import se.lexicon.daniel.schoolmanagement.models.StudentModels;
 
 public class CourseDao implements CourseDaoSignatures {
 

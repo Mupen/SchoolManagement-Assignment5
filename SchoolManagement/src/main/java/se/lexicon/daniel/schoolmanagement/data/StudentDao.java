@@ -70,7 +70,7 @@ public class StudentDao implements StudentDaoSignatures {
 				newObjectList.add(studentObject);
 			}
 		}
-			return null;
+			return newObjectList;
 	}
 	
 	

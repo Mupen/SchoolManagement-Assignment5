@@ -76,7 +76,7 @@ public class SchoolServiceTest {
 	public void test_registerc_SaveObjectToList() {
 		courseObject = new CourseModels(courseName, courseStartDate, courseWeekDuration);
 		assertEquals(courseObject, courseDaoDependency.saveCourseObject(courseObject));
-		schoolServiceInterfaceDependency.registerNewCourse(courseName, courseStartDate, courseWeekDuration)
+		schoolServiceInterfaceDependency.registerNewCourse(courseName, courseStartDate, courseWeekDuration);
 	}
 	
 	@Test

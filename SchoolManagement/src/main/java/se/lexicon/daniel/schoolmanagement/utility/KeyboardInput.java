@@ -6,6 +6,8 @@ import java.util.Scanner;
 	public class KeyboardInput {
 		// Scanner function and Random function.
 		static Scanner keyboard = new Scanner(System.in);
+		
+		
 	    public static String getString(String inputString) {
 	        System.out.print(inputString);
 	        return keyboard.nextLine();
@@ -15,6 +17,16 @@ import java.util.Scanner;
 			System.out.print(inputString);
 			LocalDate newDateInput = LocalDate.parse(keyboard.nextLine());
 	        return newDateInput;
+		}
+		
+		public static int getInt() {
+			try {
+				System.out.println("Enter a number: ");
+				String input = keyboard.nextLine();
+				return Integer.parseInt(input);
+			} catch (NumberFormatException e) {System.out.println("Not a valid number");
+				return getInt();
+			}
 		}
 		
 	    public static int StringToInt(String inputString) {
