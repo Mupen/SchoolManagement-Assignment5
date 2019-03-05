@@ -18,9 +18,7 @@ public class CourseDao implements CourseDaoSignatures {
 	
 	@Override
 	public CourseModels saveCourseObject(CourseModels courseObject) throws IllegalArgumentException {
-		if(courseObject == null) {
-			throw new IllegalArgumentException();
-		}			
+		if(courseObject == null) {throw new IllegalArgumentException();}			
 		if(findCourseById(courseObject.getCourseId()) != null) {
 			throw new IllegalArgumentException("Object with same id exists in storage");
 			

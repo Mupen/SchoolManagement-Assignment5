@@ -3,7 +3,6 @@ package se.lexicon.daniel.schoolmanagement.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.After;

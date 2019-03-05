@@ -1,16 +1,12 @@
 package se.lexicon.daniel.schoolmanagement.service;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.lexicon.daniel.ArenaFighter_Assignment3.service.FightingService;
-import se.lexicon.daniel.ArenaFighter_Assignment3.service.FightingServiceSignatures;
 import se.lexicon.daniel.schoolmanagement.data.CourseDao;
 import se.lexicon.daniel.schoolmanagement.data.CourseDaoSignatures;
 import se.lexicon.daniel.schoolmanagement.data.StudentDao;
@@ -29,7 +25,6 @@ public class SchoolServiceTest {
 	private CourseModels courseObject;
 	private StudentModels newStudentObject;
 	private CourseModels newCourseObject;
-	
 	
 	// student
 	private int studentId;
@@ -81,8 +76,7 @@ public class SchoolServiceTest {
 	
 	@Test
 	public void test_registerNewStudentToCourse() {
-		
-		
+	
 	}
 	
 	@Test

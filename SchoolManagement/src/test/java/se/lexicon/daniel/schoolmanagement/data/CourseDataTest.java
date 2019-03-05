@@ -15,7 +15,7 @@ import se.lexicon.daniel.schoolmanagement.models.CourseModels;
 
 public class CourseDataTest {
 	//This is what we are going to test
-	private CourseDaoSignatures CourseDaoInterfaceTest = CourseDao.getCourseDaoInstance();
+	private CourseDaoSignatures courseDaoInterfaceTest = CourseDao.getCourseDaoInstance();
 
 	// Course test 1
 	private int testCourseId1;
@@ -30,53 +30,52 @@ public class CourseDataTest {
 	private LocalDate courseStartDate2 = LocalDate.parse("2019-12-01");
 	private int courseWeekDuration2 = 20;
 	
-	
 	//Runs BEFORE each test
 	@Before
 	public void init() {
 		testCourseObject1 = new CourseModels(courseName1, courseStartDate1, courseWeekDuration1);
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject1);
+		courseDaoInterfaceTest.saveCourseObject(testCourseObject1);
 		testCourseId1 = testCourseObject1.getCourseId();
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject2 = new CourseModels(courseName2, courseStartDate2, courseWeekDuration2));
+		courseDaoInterfaceTest.saveCourseObject(testCourseObject2 = new CourseModels(courseName2, courseStartDate2, courseWeekDuration2));
 	}
 
 	//Runs AFTER each test
 	@After
 	public void tearDown() {
-		CourseDaoInterfaceTest.removeAllCourse();;
+		courseDaoInterfaceTest.removeAllCourse();;
 	}
 
 	@Test
 	public void test_saveCourseObject_return_CourseObject() {
 		CourseModels newCourseObject = new CourseModels("Java", LocalDate.parse("2018-03-01"), 30);
-		assertEquals(newCourseObject, CourseDaoInterfaceTest.saveCourseObject(newCourseObject));
+		assertEquals(newCourseObject, courseDaoInterfaceTest.saveCourseObject(newCourseObject));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void test_save_Course_object_duplicate_throw_IllegalArgumentException() {
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject1);	
-		CourseDaoInterfaceTest.saveCourseObject(testCourseObject2);
+	public void test_save_course_object_duplicate_throw_IllegalArgumentException() {
+		courseDaoInterfaceTest.saveCourseObject(testCourseObject1);	
+		courseDaoInterfaceTest.saveCourseObject(testCourseObject2);
 	}
 
 	@Test
 	public void test_findCourseById_return_CourseObject() {
-		assertEquals(testCourseObject1, CourseDaoInterfaceTest.findCourseById(testCourseId1));
+		assertEquals(testCourseObject1, courseDaoInterfaceTest.findCourseById(testCourseId1));
 	}
 
 	@Test
 	public void test_findCourseByName() {
 		String expectedNameParameter = "English";
-		List<CourseModels> courseObjectList = CourseDaoInterfaceTest.findCourseByName(expectedNameParameter);
+		List<CourseModels> courseObjectList = courseDaoInterfaceTest.findCourseByName(expectedNameParameter);
 		for(CourseModels testCourseObject1 : courseObjectList) {
 			assertEquals(expectedNameParameter, testCourseObject1.getCourseName());
 			assertNotSame(expectedNameParameter, testCourseObject2.getCourseName());
 		}
 	}
 
-	@Test
+	@Test	
 	public void test_findCourseByName_with_lambda() {
 		String expectedNameParameter = "Math";
-		List<CourseModels> courseObjectList = CourseDaoInterfaceTest.findCourseByName(expectedNameParameter);
+		List<CourseModels> courseObjectList = courseDaoInterfaceTest.findCourseByName(expectedNameParameter);
 		assertTrue(courseObjectList.stream().allMatch(course -> course.getCourseName().equals(expectedNameParameter)));
 	}
 }
